@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: Test connection to localhost (duh!)
+      ping:
+    - name: Say hello
+      shell: echo 'Hello Ansible'
+      register: hello_ansible
+    - debug: msg="{{ hello_ansible.stdout }}"
+    - debug: var=ansible_eth0.ipv4.address
+    - name: install packages
+      apt: name={{ item }} update_cache=yes state=latest
+      with_items:
+        - curl
+        - vim
+
