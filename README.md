@@ -55,5 +55,5 @@ $ PACKER_LOG=1 packer build vbox.json
 
 2. "I see the shell commands and Ansible tasks being successfully executed inside the image, yet, as soon as I log into the Vagrant machine, I can't see the changes there. How come?"
 
-Vagrant likes caching. To clear the cache, destroy the Vagrant box (`vagrant destroy`), delete the local Vagrant directory (`rm -rf .vagrant`) and start afresh (`vagrant up`) - you don't even need to *re-pack* the Virtualbox image.
+Vagrant likes caching. To clear the cache, destroy the Vagrant image (`vagrant destroy`), then find the cached Vagrant box and remove it (`vagrant box remove file://./builds/ubuntu-16.04-amd64-virtualbox.box`) - you don't even need to *re-pack* the Virtualbox image.
 
